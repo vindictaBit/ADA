@@ -6,9 +6,9 @@ import com.panayotis.gnuplot.JavaPlot;
 
 public class DFS_BFS    
 {    
-    private int vEscogido;       				// número de vértices del grafo 
-    private LinkedList<Integer> adya[];      	// lista de los vértices adyacentes, para DFS y BFS   
-    private Queue<Integer> list;           		// cola para el BFS    
+    private int vEscogido;       				// nÃºmero de vÃ©rtices del grafo 
+    private LinkedList<Integer> adya[];      	// lista de los vÃ©rtices adyacentes, para DFS y BFS   
+    private Queue<Integer> queue;           		// cola para el BFS    
     
     // el grafo no es dirigido  
     DFS_BFS(int v1)    
@@ -19,7 +19,7 @@ public class DFS_BFS
         {    
             adya[i] = new LinkedList<>();    
         }    
-        list = new LinkedList<Integer>();    
+        queue = new LinkedList<Integer>();    
     }    
     
     void insertar(int v1,int v2)    
@@ -30,7 +30,7 @@ public class DFS_BFS
  // --------- DFS ---------
     void DFS(int v1)
     {
-        // Array con los vertices list si visitan
+        // Array con los vertices que se visitan
         boolean recorrer[] = new boolean[vEscogido]; 	//4
         // vertices no visitado por defecto (falso)
         DFS(v1, recorrer);								
@@ -58,11 +58,11 @@ public class DFS_BFS
         boolean recorrer[] = new boolean[vEscogido];   
         int a = 0;    
         recorrer[n]=true; 
-        // n será la raíz                 
-        list.add(n);      
-        while (list.size() != 0)    
+        // n serÃ¡ la raÃ­z                 
+        queue.add(n);      
+        while (queue.size() != 0)    
         {    
-            n = list.poll();             
+            n = queue.poll();             
             // recorriendo 
             for (int i = 0; i < adya[n].size(); i++)    
             {    
@@ -71,7 +71,7 @@ public class DFS_BFS
                 if (!recorrer[a])        
                 {    
                     recorrer[a] = true;    
-                    list.add(a);    
+                    queue.add(a);    
                 }    
             }      
         }    
@@ -94,7 +94,7 @@ public class DFS_BFS
     	long timeS, timeE;
     	
     	DFS_BFS DB = new DFS_BFS(4);  
-    	// tendremos 4 vértices
+    	// tendremos 4 vÃ©rtices
     	DB.insertar(0, 1);
         DB.insertar(0, 2);
         DB.insertar(1, 2);
@@ -102,13 +102,13 @@ public class DFS_BFS
         DB.insertar(2, 3);
         DB.insertar(3, 3);
         
-        // i será el inicio de los recorridos DFS y BFS
+        // i serÃ¡ el inicio de los recorridos DFS y BFS
     	for (int i = 0; i < 4; i++) {
     		timeS = System.nanoTime();
     		DB.DFS(i);
     		timeE = System.nanoTime();
     		bw.write((i) + "\t" + (timeE - timeS) + "\n"); 
-    		// Imprime vértice escogido y tiempo
+    		// Imprime vÃ©rtice escogido y tiempo
     		
     		timeS = System.nanoTime();
     		DB.BFS(i);  
