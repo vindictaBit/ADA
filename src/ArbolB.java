@@ -65,13 +65,13 @@ public class ArbolB<E extends Comparable<? super E>> implements InterfaceB<E> {
 
     @Override
     public E remove(E value) {
-        //TODO implement here!
+        root = null;
         return null;
     }
 
     @Override
     public void clear() {
-        //TODO implement here!
+        root = null;
     }
 
     @Override
