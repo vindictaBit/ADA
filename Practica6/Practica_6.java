@@ -3,10 +3,8 @@ import java.util.*;
 import java.util.Collections;
 
 public class Practica_6 {
-	
-	//---------------------------------------- MAIN -------------------------------------------------
-	
-	public static void main(String[] args)
+    //---------------------------------------- MAIN -------------------------------------------------
+    public static void main(String[] args)
     {
     	long timeS, timeE, timeR;
     	System.out.println("\n--- Radix Sort ---");
@@ -23,11 +21,11 @@ public class Practica_6 {
         bucketSort(arr2);
         timeE = System.nanoTime();
         timeR = timeE - timeS;
-		imprimir(arr2, timeR);
-		
-		System.out.println("\n--- Counting Sort ---");
-		int[] arr3 = { -30, 0, -1, 15, 2 };
-		timeS = System.nanoTime();
+	imprimir(arr2, timeR);
+
+	System.out.println("\n--- Counting Sort ---");
+	int[] arr3 = { -30, 0, -1, 15, 2 };
+	timeS = System.nanoTime();
         countSort(arr3);
         timeE = System.nanoTime();
         timeR = timeE - timeS;
@@ -51,7 +49,7 @@ public class Practica_6 {
 	
     //---------------------------------------- RADIX SORT-------------------------------------------------
     
-	// obtiene el número máximo para saber el número de dígitos
+	// obtiene el nÃºmero mÃ¡ximo para saber el nÃºmero de dÃ­gitos
 	static int getMax(int arr[])
     {
     	int n = arr.length;
@@ -74,7 +72,7 @@ public class Practica_6 {
         for (i = 0; i < n; i++)
             conteo[(arr[i] / exp) % 10]++;
  
-        // conteo[i] contendrá el dígito de salida[]
+        // conteo[i] contendrÃ¡ el dÃ­gito de salida[]
         for (i = 1; i < 10; i++)
             conteo[i] += conteo[i - 1];
         
@@ -93,7 +91,7 @@ public class Practica_6 {
     	int n = arr.length;
         int max = getMax(arr);
 
-        // exp es 10^i, i es el número de dígito actual
+        // exp es 10^i, i es el nÃºmero de dÃ­gito actual
         for (int exp = 1; max / exp > 0; exp *= 10)
             countSort(arr, n, exp);
     }
